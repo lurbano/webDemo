@@ -7,5 +7,6 @@
     $f = fopen("test.json", "w");
     fwrite($f, "This is a file.");
     fclose($f);
+    echo "Saved";
 
 ?>
