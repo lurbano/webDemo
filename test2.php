@@ -5,6 +5,8 @@
     print_r($_GET) . "<br>";
     echo "Hello " . $_GET["name"] . "<p>";
 
+    echo '<input type=button value="Submit">';
+
     foreach ($_GET as  $id => $val){
         echo $id . "==>" . $val . "<br>";
     }
