@@ -11,7 +11,7 @@
         echo $id . "==>" . $val . "<br>";
     }
 
-    $f = fopen("test.json", "w");
+    $f = fopen("test.json", "a");
     fwrite($f, "This is a file.");
     fclose($f);
     echo "Saved";
