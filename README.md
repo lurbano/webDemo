@@ -29,8 +29,9 @@ http://popu.local/projects/webDemo/test.php
 ```
 
 ## General Procedures
-It is highly recommended that you edit your website's repository on your computer, sync it to github, then pull it down to the server using the git pull command:
+It is highly recommended that you edit your website's repository on your computer, sync it to github, then pull it down to the server using the git pull command while you're in your directory on the server:
 ```bash
+> cd /var/www/html/projects/webDemo
 > git pull
 ```
 
