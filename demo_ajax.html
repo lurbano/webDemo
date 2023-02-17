@@ -23,37 +23,49 @@
 </body>
 
 <script>
-    //get element
+    //set-up SUBMIT button
     butDiv = document.getElementById("get_fortune");
-    //add event handler
     butDiv.addEventListener("click", getFortune);
 
     //get fortune function
     function getFortune(){
         
-        //send name to fortuneteller webpage
-        url = 'https://soriki.com/eve/fortune/fortune-json.php';
+        // set the base url 
+        url = 'fortune-json.php';
+
+        // XMLHttpRequest class sends data and handles returned infomation.
         xRequest = new XMLHttpRequest();
+
         //function to handle info returned
         xRequest.onreadystatechange = function() {
+            // This if statement checks to see if the server successfully returned information.
             if (this.readyState == 4 && this.status == 200) {
+                // data returned by server is automatically placed in the variable "this.responseText"
+                //place response into the assigned div on webpage
                 document.getElementById("fortuneJSON").innerHTML = this.responseText;
+                // if the server sends data that is json formatted you can parse it into an associative array (if it's not json you don't do this)
                 let response = JSON.parse(this.responseText);
+
+                // put the relevant info on the webpage
                 document.getElementById("fortune").innerHTML = response["fortune"];
             }
         };
 
         
         //compose url parameters to be sent with the GET 
-        //get name
+        //get username from the webpage
         username = document.getElementById("username").value;
         //debug: check if page gets the name
         console.log(username);
+        // GET requests have the data passed as key-value pairs at the end of the url. In this example, assuming the name entered was "Doc" we want to get to: "fortune-json.php?name=Doc". So we put together the ending part as a string
         params = `?name=${username}`;
         console.log(params);
-        //add params to url
+
+        //add params to url 
         url += params;
-        //setup sent as GET, url, and asynchronous (true)
+        console.log("url: "+ url);
+
+        //setup request as GET, url, and asynchronous (true) and send
         xRequest.open("GET", url, true);
         xRequest.send();
 
